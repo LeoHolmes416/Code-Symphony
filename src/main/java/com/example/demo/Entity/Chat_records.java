@@ -3,6 +3,7 @@ package com.example.demo.Entity;
 import com.example.demo.Tools.Connectsql;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -14,7 +15,7 @@ public class Chat_records {
     public String stu_user_id_receive;
     public String message;
     public String send_time;
-    List<Chat_records> chat_recordsList=new ArrayList<Chat_records>();
+    public List<Chat_records> chat_recordsList=new ArrayList<Chat_records>();
 
     public List<Chat_records> getChat_recordsList() {
         return chat_recordsList;
@@ -54,6 +55,23 @@ public class Chat_records {
 
     public void setSend_time(String send_time) {
         this.send_time = send_time;
+    }
+
+    public void readdata(){
+        String sql="SELECT * FROM chat_records";
+        try{
+            ResultSet rs= Connectsql.getConnectsql().conn.createStatement().executeQuery(sql);
+            while(rs.next()){
+                Chat_records chat_records=new Chat_records();
+                chat_records.stu_user_id_send=rs.getString("stu_user_id_send");
+                chat_records.stu_user_id_receive=rs.getString("stu_user_id_receive");
+                chat_records.message=rs.getString("message");
+                chat_records.send_time=rs.getString("send_time");
+                this.chat_recordsList.add(chat_records);
+            }
+        }catch (Exception p){
+            p.printStackTrace();
+        }
     }
 
     public boolean addnewmessage(String stu_user_id_send,String stu_user_id_receive,String message){

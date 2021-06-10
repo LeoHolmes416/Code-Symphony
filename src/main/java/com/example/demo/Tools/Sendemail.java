@@ -5,9 +5,9 @@ import org.apache.commons.mail.HtmlEmail;
 public class Sendemail {
 
     public String code;
+    public String mail;
 
-    public Sendemail(String code){
-        this.code=code;
+    public Sendemail(){
     }
 
     public static boolean sendEmail(String emailaddress,String code){

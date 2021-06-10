@@ -1,5 +1,8 @@
 package com.example.demo.Entity;
 
+import com.example.demo.Tools.Connectsql;
+
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,7 +11,7 @@ public class Group {
     public String group_name;
     public String create_at;
     public int group_capacity;
-    List<Group> groupList=new ArrayList<>();
+    public List<Group> groupList=new ArrayList<>();
 
     public String getGroup_id() {
         return group_id;
@@ -40,4 +43,22 @@ public class Group {
     public void setGroupList(List<Group> groupList) {
         this.groupList = groupList;
     }
+
+    public void readdata(){
+        String sql="SELECT * FROM group";
+        try{
+            ResultSet rs= Connectsql.getConnectsql().conn.createStatement().executeQuery(sql);
+            while(rs.next()){
+                Group group=new Group();
+                group.group_id=rs.getString("group_id");
+                group.group_name=rs.getString("group_name");
+                group.create_at=rs.getString("create_at");
+                group.group_capacity=rs.getInt("group_capacity");
+                this.groupList.add(group);
+            }
+        }catch (Exception p){
+            p.printStackTrace();
+        }
+    }
+
 }

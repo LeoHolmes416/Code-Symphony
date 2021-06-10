@@ -12,8 +12,6 @@ import java.util.List;
 
 public class Official extends User{
 
-    public String aaa;
-
     public String ofc_user_id;
     public String user_nickname;
     public String user_password;
@@ -22,7 +20,7 @@ public class Official extends User{
     public String ofc_name;
     public String type;
     public String update_at;
-    public static List<Official> officialList=new ArrayList<>();
+    public List<Official> officialList=new ArrayList<>();
 
     public static Official officiallogin;
 
@@ -94,23 +92,25 @@ public class Official extends User{
                 Official official=new Official();
                 official.ofc_user_id=rs.getString("ofc_user_id");
                 official.user_nickname=rs.getString("user_nickname");
-                official.password=rs.getString("user_password");
+                official.user_password=rs.getString("user_password");
                 official.user_state=rs.getInt("user_state");
                 official.register_date=rs.getString("register_date");
                 official.ofc_name=rs.getString("ofc_name");
                 official.type=rs.getString("type");
                 official.update_at=rs.getString("update_at");
-                officialList.add(official);
+                this.officialList.add(official);
             }
         }catch (Exception p){
             p.printStackTrace();
         }
     }
 
-    public static boolean officiallogin(String userid,String password){
+    public boolean officiallogin(String userid,String password){
         Iterator<Official> iterator=officialList.iterator();
         while(iterator.hasNext()){
             Official official= iterator.next();
+            System.out.println("adb");
+            System.out.println(official.ofc_user_id+" "+official.user_password);
             if(official.getOfc_user_id().equals(userid)&&official.getUser_password().equals(password)){
                 officiallogin=official;
                 return true;
@@ -119,7 +119,7 @@ public class Official extends User{
         return false;
     }
 
-    public static boolean addnewofficial(String username,String ofc_name,String password){
+    public  boolean addnewofficial(String username,String ofc_name,String password){
         Official official=new Official();
         official.setOfc_user_id(username);
         official.setOfc_name(ofc_name);

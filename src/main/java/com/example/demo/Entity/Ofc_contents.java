@@ -1,19 +1,22 @@
 package com.example.demo.Entity;
 
+import com.example.demo.Tools.Connectsql;
+
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public class Ofc_contents {
     public String ofc_content_id;
-    public String groupid;
+    public String group_id;
     public String title;
     public String contents;
     public String pub_time;
     public String update_at;
-    public String views;
+    public int views;
 
-    List<Ofc_contents> ofc_contentsList= new ArrayList<>();
+    public List<Ofc_contents> ofc_contentsList= new ArrayList<>();
 
     public String getOfc_content_id() {
         return ofc_content_id;
@@ -24,11 +27,11 @@ public class Ofc_contents {
     }
 
     public String getGroupid() {
-        return groupid;
+        return group_id;
     }
 
     public void setGroupid(String groupid) {
-        this.groupid = groupid;
+        this.group_id = groupid;
     }
 
     public String getTitle() {
@@ -63,11 +66,11 @@ public class Ofc_contents {
         this.update_at = update_at;
     }
 
-    public String getViews() {
+    public int getViews() {
         return views;
     }
 
-    public void setViews(String views) {
+    public void setViews(int views) {
         this.views = views;
     }
 
@@ -77,6 +80,26 @@ public class Ofc_contents {
 
     public void setOfc_contentsList(List<Ofc_contents> ofc_contentsList) {
         this.ofc_contentsList = ofc_contentsList;
+    }
+
+    public void readdata(){
+        String sql="SELECT * FROM ofc_contents";
+        try{
+            ResultSet rs= Connectsql.getConnectsql().conn.createStatement().executeQuery(sql);
+            while(rs.next()){
+                Ofc_contents ofc_contents=new Ofc_contents();
+                ofc_contents.ofc_content_id=rs.getString("stu_content_id");
+                ofc_contents.group_id=rs.getString("group_id");
+                ofc_contents.title=rs.getString("title");
+                ofc_contents.contents=rs.getString("contents");
+                ofc_contents.pub_time=rs.getString("pub_time");
+                ofc_contents.update_at=rs.getString("update_at");
+                ofc_contents.views=rs.getInt("views");
+                this.ofc_contentsList.add(ofc_contents);
+            }
+        }catch (Exception p){
+            p.printStackTrace();
+        }
     }
 
     public String viewgroupcontents(String groupid){

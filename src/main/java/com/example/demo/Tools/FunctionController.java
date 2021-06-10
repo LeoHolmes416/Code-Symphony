@@ -2,11 +2,15 @@ package com.example.demo.Tools;
 
 
 import com.example.demo.Entity.Official;
+import com.example.demo.Entity.Stu_contents;
 import com.example.demo.Entity.Student;
 import com.example.demo.Entity.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.HtmlUtils;
+
+import java.util.Iterator;
+import java.util.List;
 
 
 @Controller
@@ -23,16 +27,20 @@ public class FunctionController {
         user1.setPassword(user.password);
         user1.setType(user.type);
         System.out.println("connnect success");
+        System.out.println(user.username+" "+user.password+" a"+user1.getPassword());
         if(user1.getType().equals("个人")){
-            Student.readdata();
-            if(Student.studentlogin(user1.getUsername(),user1.getPassword())){
+            Student student=new Student();
+            student.readdata();
+            if(student.studentlogin(user1.getUsername(),user1.getPassword())){
                 return new Responsecode("666");
             }else{
                 return new Responsecode("404");
             }
         }
-        else if(user1.getType().equals("official")){
-            if(Official.officiallogin(user1.getUsername(), user1.getPassword())){
+        else if(user1.getType().equals("官方")){
+            Official official=new Official();
+            official.readdata();
+            if(official.officiallogin(user1.getUsername(), user1.getPassword())){
                 return new Responsecode("666");
             }else{
                 return new Responsecode("404");
@@ -48,34 +56,103 @@ public class FunctionController {
     @CrossOrigin
     @PostMapping("api/sendValidateNum")
     @ResponseBody
-    public Responsecode sendvalidatenum(@RequestParam("mail") String email){
+    public Responsecode sendvalidatenum(@RequestBody Sendemail email){
+        String mail= email.mail;
+        System.out.println("bbbbb");
+        System.out.println(mail);
         String code="8E707";
-        if(Sendemail.sendEmail(email,code)){
+        if(Sendemail.sendEmail(mail,code)){
             return new Responsecode(code);
         }else{
             return new Responsecode("404");
         }
     }
 
-//    //注册
-//    @CrossOrigin
-//    @GetMapping("api/register")
-//    @ResponseBody
-//    public Responsecode register(@RequestParam("username") String username,
-//                                 @RequestParam("type") String type,
-//                                 @RequestParam("nick_name") String nickname,
-//                                 @RequestParam("password") String password){
-//        if(type.equals("student")){
-//            if(Student.addnewstudent(username,nickname,password)){
-//                return new Responsecode("666");
-//            }else{
-//                return new Responsecode("404");
-//            }
-//        }
-//        else if(type.equals("official")){
-//
-//        }
-//    }
+    //注册
+    @CrossOrigin
+    @PostMapping("api/register")
+    @ResponseBody
+    public Responsecode register(@RequestBody User user){
+        String type=user.type;
+        String username=user.username;
+        String nickname=user.nick_name;
+        String password=user.password;
+        String ofcname=user.ofc_name;
+        if(type.equals("个人")){
+            Student student=new Student();
+            if(student.addnewstudent(username,nickname,password)){
+                return new Responsecode("666");
+            }else{
+                return new Responsecode("404");
+            }
+        }
+        else if(type.equals("官方")){
+            Official official=new Official();
+            if(official.addnewofficial(username,ofcname,password)){
+                return new Responsecode("666");
+            }
+            else{
+                return new Responsecode("404");
+            }
+        }
+        else{
+            return new Responsecode("404");
+        }
+    }
 
+    //展示所有树洞信息
+    @CrossOrigin
+    @GetMapping("api/showAllTreeHoles")
+    @ResponseBody
+    public List<Stu_contents> getalltreeholes(){
+        Stu_contents stu_contents=new Stu_contents();
+        stu_contents.readdata();
+        List<Stu_contents> stu_contentsList=stu_contents.stu_contentsList;
+        return stu_contentsList;
+    }
+
+    @CrossOrigin
+    @GetMapping("api/addlike")
+    @ResponseBody
+    public Responsecode addlike(@RequestParam("stu_content_id") String stu_content_id){
+        Stu_contents stu_contents=new Stu_contents();
+        if(stu_contents.addlike(stu_content_id)){
+            return new Responsecode("666");
+        }else{
+            return new Responsecode("404");
+        }
+    }
+
+    @CrossOrigin
+    @GetMapping("api/addDislike")
+    @ResponseBody
+    public Responsecode addDislike(@RequestParam("stu_content_id") String stu_content_id){
+        Stu_contents stu_contents=new Stu_contents();
+        if(stu_contents.adddislike(stu_content_id)){
+            return new Responsecode("666");
+        }else{
+            return new Responsecode("404");
+        }
+    }
+
+    @CrossOrigin
+    @PostMapping("api/addTreeHole")
+    @ResponseBody
+    public Responsecode addtreehole(@RequestBody Stu_contents stu_contents){
+        if(stu_contents.addnewstu_contents(stu_contents.stu_user_id,stu_contents.title, stu_contents.contents, stu_contents.tag)){
+            return new Responsecode("666");
+        }else {
+            return new Responsecode("404");
+        }
+    }
+
+    @CrossOrigin
+    @GetMapping("api/showMyTreeHoles")
+    @ResponseBody
+    public List<Stu_contents> showmytreeholes(@RequestParam("stu_user_id") String stu_user_id){
+        Stu_contents stu_contents=new Stu_contents();
+        List<Stu_contents> mycontents=stu_contents.showmycontents(stu_user_id);
+        return mycontents;
+    }
 
 }

@@ -24,7 +24,7 @@ public class Student extends User{
     public String city;
     public String update_at;   //更新时间
 
-    public static List<Student> studentlist=new ArrayList<Student>();
+    public List<Student> studentlist=new ArrayList<Student>();
 
     private static Student studentlogin;
 
@@ -33,7 +33,7 @@ public class Student extends User{
         this.password=super.getPassword();
     }
 
-    public static void readdata(){
+    public void readdata(){
         String sql="SELECT * FROM student";
         try{
             ResultSet rs= Connectsql.getConnectsql().conn.createStatement().executeQuery(sql);
@@ -50,7 +50,7 @@ public class Student extends User{
                 student.stu_tag=rs.getString("stu_tag");
                 student.city=rs.getString("city");
                 student.update_at=rs.getString("update_at");
-                student.studentlist.add(student);
+                this.studentlist.add(student);
             }
         }catch (Exception p){
             p.printStackTrace();
@@ -161,7 +161,7 @@ public class Student extends User{
         this.stu_tag = stu_tag;
     }
 
-    public static boolean studentlogin(String userid,String password){
+    public boolean studentlogin(String userid,String password){
         Iterator<Student> iterator=studentlist.iterator();
         while(iterator.hasNext()){
             Student student= iterator.next();
@@ -173,13 +173,13 @@ public class Student extends User{
         return false;
     }
 
-    public static boolean addnewstudent(String username,String nickname,String password){
+    public boolean addnewstudent(String username,String nickname,String password){
         Student student=new Student();
         student.setStu_user_id(username);
         student.setUser_nickname(nickname);
         student.setPassword(password);
         studentlist.add(student);
-        String sql="insert into student values(?,?,?,?,?,?,?,?,?,?,?)";
+        String sql="insert into student values(?,?,?,?,?,?,?,?,?,?,?,?)";
         //获取系统当前时间
         SimpleDateFormat tempDate = new SimpleDateFormat("yyyy-MM-dd");
         String datetime = tempDate.format(new java.util.Date());
@@ -187,16 +187,17 @@ public class Student extends User{
         try{
             PreparedStatement pr=Connectsql.getConnectsql().conn.prepareStatement(sql);
             pr.setString(1,username);
-            pr.setString(2,nickname);
-            pr.setString(3,password);
-            pr.setInt(4,0);
-            pr.setString(5,datetime);
-            pr.setString(6,null);
+            pr.setString(2,null);
+            pr.setString(3,nickname);
+            pr.setString(4,password);
+            pr.setInt(5,0);
+            pr.setString(6,datetime);
             pr.setString(7,null);
             pr.setString(8,null);
             pr.setString(9,null);
             pr.setString(10,null);
             pr.setString(11,null);
+            pr.setString(12,null);
             int row=pr.executeUpdate();
             if(row>0){
                 return true;
