@@ -1,0 +1,12 @@
+{
+  "name": "lime",
+  "version": "0.0.1",
+  "description": "Code_Symphony support",
+  "author": "Akira126",
+  "private": true,
+  "dependencies": {
+    "@capacitor/android": "^2.4.7",
+    "@capacitor/cli": "^2.0.0",
+    "@capacitor/core": "^2.0.0"
+  }
+}

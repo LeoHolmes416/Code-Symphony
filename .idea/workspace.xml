@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="3048092c-fac7-45cf-9251-d33b467b9c95" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/Code_Lime.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/.editorconfig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/.eslintignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/.eslintrc.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/.postcssrc.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/.vscode/extensions.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/.vscode/settings.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/babel.config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/jsconfig.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/public/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/public/icons/favicon-128x128.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/public/icons/favicon-16x16.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/public/icons/favicon-32x32.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/public/icons/favicon-96x96.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/quasar.conf.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/src-capacitor/android/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/src-capacitor/android/app/.npmignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/src-capacitor/android/app/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/src-capacitor/android/app/capacitor.build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/src-capacitor/android/app/proguard-rules.pro" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/src-capacitor/android/app/src/androidTest/java/com/getcapacitor/myapp/ExampleInstrumentedTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/src-capacitor/android/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/src-capacitor/android/app/src/main/assets/capacitor.config.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/src-capacitor/android/app/src/main/java/org/capacitor/quasar/app/MainActivity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/src-capacitor/android/app/src/main/res/drawable-land-hdpi/splash.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/src-capacitor/android/app/src/main/res/drawable-land-mdpi/splash.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/src-capacitor/android/app/src/main/res/drawable-land-xhdpi/splash.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/src-capacitor/android/app/src/main/res/drawable-land-xxhdpi/splash.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/src-capacitor/android/app/src/main/res/drawable-land-xxxhdpi/splash.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/src-capacitor/android/app/src/main/res/drawable-port-hdpi/splash.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/src-capacitor/android/app/src/main/res/drawable-port-mdpi/splash.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/src-capacitor/android/app/src/main/res/drawable-port-xhdpi/splash.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/src-capacitor/android/app/src/main/res/drawable-port-xxhdpi/splash.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/src-capacitor/android/app/src/main/res/drawable-port-xxxhdpi/splash.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/src-capacitor/android/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/src-capacitor/android/app/src/main/res/drawable/ic_launcher_background.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/src-capacitor/android/app/src/main/res/drawable/splash.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/src-capacitor/android/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/src-capacitor/android/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/src-capacitor/android/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/src-capacitor/android/app/src/main/res/mipmap-hdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/src-capacitor/android/app/src/main/res/mipmap-hdpi/ic_launcher_foreground.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/src-capacitor/android/app/src/main/res/mipmap-hdpi/ic_launcher_round.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/src-capacitor/android/app/src/main/res/mipmap-mdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/src-capacitor/android/app/src/main/res/mipmap-mdpi/ic_launcher_foreground.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/src-capacitor/android/app/src/main/res/mipmap-mdpi/ic_launcher_round.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/src-capacitor/android/app/src/main/res/mipmap-xhdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/src-capacitor/android/app/src/main/res/mipmap-xhdpi/ic_launcher_foreground.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/src-capacitor/android/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/src-capacitor/android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/src-capacitor/android/app/src/main/res/mipmap-xxhdpi/ic_launcher_foreground.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/src-capacitor/android/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/src-capacitor/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/src-capacitor/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_foreground.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/src-capacitor/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/src-capacitor/android/app/src/main/res/values/ic_launcher_background.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/src-capacitor/android/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/src-capacitor/android/app/src/main/res/values/styles.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/src-capacitor/android/app/src/main/res/xml/config.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/src-capacitor/android/app/src/main/res/xml/file_paths.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/src-capacitor/android/app/src/test/java/com/getcapacitor/myapp/ExampleUnitTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/src-capacitor/android/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/src-capacitor/android/capacitor.settings.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/src-capacitor/android/gradle.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/src-capacitor/android/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/src-capacitor/android/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/src-capacitor/android/gradlew" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/src-capacitor/android/gradlew.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/src-capacitor/android/settings.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/src-capacitor/android/variables.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/src-capacitor/capacitor-flag.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/src-capacitor/capacitor.config.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/src-capacitor/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/src-capacitor/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/src-cordova/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/src-cordova/config.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/src-cordova/cordova-flag.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/src-cordova/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/src-cordova/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/src/App.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/src/assets/bg-Lime.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/src/assets/bg-index.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/src/assets/bg.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/src/assets/bg1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/src/assets/border-img.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/src/assets/circle.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/src/assets/grass.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/src/assets/lemon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/src/assets/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/src/assets/quasar-logo-full.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/src/assets/rain-station.mp4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/src/assets/urban-dusk.mp4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/src/boot/.gitkeep" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/src/boot/axios.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/src/components/Comment-Dialog.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/src/components/EssentialLink.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/src/components/MyCarousel.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/src/components/account-dropdown.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/src/css/app.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/src/css/match.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/src/css/quasar.variables.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/src/index.template.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/src/layouts/MainLayout.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/src/pages/AccountForm.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/src/pages/Error404.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/src/pages/Index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/src/pages/MatchFriends.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/src/pages/TreeHole.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/src/router/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/src/router/routes.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/src/store/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/src/store/module-example/actions.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/src/store/module-example/getters.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/src/store/module-example/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/src/store/module-example/mutations.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/src/store/module-example/state.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lime/src/store/store-flag.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/.bin/yarn" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/.bin/yarn.cmd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/.bin/yarn.ps1" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/.bin/yarnpkg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/.bin/yarnpkg.cmd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/.bin/yarnpkg.ps1" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/yarn/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/yarn/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/yarn/bin/yarn" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/yarn/bin/yarn.cmd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/yarn/bin/yarn.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/yarn/bin/yarnpkg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/yarn/bin/yarnpkg.cmd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/yarn/lib/cli.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/yarn/lib/v8-compile-cache.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/yarn/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node_modules/yarn/preinstall.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Vue Single File Component" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1stO6wAVpg95SeqTgEkJ7trnurs" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Code_Lime\Lime\src\assets" />
+      <recent name="D:\Code_Lime\Lime\src\css" />
+      <recent name="D:\Code_Lime\Lime\public" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="3048092c-fac7-45cf-9251-d33b467b9c95" name="Default Changelist" comment="" />
+      <created>1621688248115</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1621688248115</updated>
+      <workItem from="1621688249221" duration="1644000" />
+      <workItem from="1621766676998" duration="4748000" />
+      <workItem from="1621779905852" duration="2948000" />
+      <workItem from="1621822447654" duration="4142000" />
+      <workItem from="1621849483765" duration="9702000" />
+      <workItem from="1621866114800" duration="1302000" />
+      <workItem from="1621939327936" duration="13022000" />
+      <workItem from="1622001957730" duration="8942000" />
+      <workItem from="1622027695275" duration="11942000" />
+      <workItem from="1622115796456" duration="887000" />
+      <workItem from="1622116712995" duration="8564000" />
+      <workItem from="1622125660690" duration="446000" />
+      <workItem from="1622186257098" duration="73000" />
+      <workItem from="1622274527191" duration="809000" />
+      <workItem from="1622292535601" duration="4572000" />
+      <workItem from="1622356046690" duration="14472000" />
+      <workItem from="1622376971771" duration="3887000" />
+      <workItem from="1622430815190" duration="4743000" />
+      <workItem from="1622606269139" duration="4095000" />
+      <workItem from="1622627995047" duration="19642000" />
+      <workItem from="1622709060514" duration="2584000" />
+      <workItem from="1622797123752" duration="2424000" />
+      <workItem from="1622802641118" duration="12548000" />
+      <workItem from="1622878195973" duration="8241000" />
+      <workItem from="1622892200346" duration="12509000" />
+      <workItem from="1622949780639" duration="8865000" />
+      <workItem from="1622979354028" duration="9607000" />
+      <workItem from="1622992006850" duration="1712000" />
+      <workItem from="1623146531379" duration="12759000" />
+      <workItem from="1623228303443" duration="2755000" />
+      <workItem from="1623232524729" duration="10009000" />
+      <workItem from="1623288000671" duration="1543000" />
+      <workItem from="1623322316097" duration="1651000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="486" y="212" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1621860898306">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="486" y="212" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1621860898306" />
+    <state x="414" y="166" key="FileChooserDialogImpl" timestamp="1623323749419">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="414" y="166" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1623323749419" />
+    <state x="115" y="91" key="SettingsEditor" timestamp="1623323726897">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="115" y="91" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1623323726897" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1623323596534">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1623323596534" />
+    <state x="570" y="318" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1623323468117">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="570" y="318" key="git4idea.remote.GitConfigureRemotesDialog/0.0.1536.824@0.0.1536.824" timestamp="1623323468117" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1622641590128">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1622641590128" />
+  </component>
+</project>
