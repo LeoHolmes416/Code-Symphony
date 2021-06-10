@@ -11,6 +11,9 @@ import java.util.Iterator;
 import java.util.List;
 
 public class Official extends User{
+
+    public String aaa;
+
     public String ofc_user_id;
     public String user_nickname;
     public String user_password;
