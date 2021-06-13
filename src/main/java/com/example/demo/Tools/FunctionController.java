@@ -1,10 +1,7 @@
 package com.example.demo.Tools;
 
 
-import com.example.demo.Entity.Official;
-import com.example.demo.Entity.Stu_contents;
-import com.example.demo.Entity.Student;
-import com.example.demo.Entity.User;
+import com.example.demo.Entity.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.HtmlUtils;
@@ -58,7 +55,6 @@ public class FunctionController {
     @ResponseBody
     public Responsecode sendvalidatenum(@RequestBody Sendemail email){
         String mail= email.mail;
-        System.out.println("bbbbb");
         System.out.println(mail);
         String code="8E707";
         if(Sendemail.sendEmail(mail,code)){
@@ -116,6 +112,7 @@ public class FunctionController {
     @ResponseBody
     public Responsecode addlike(@RequestParam("stu_content_id") String stu_content_id){
         Stu_contents stu_contents=new Stu_contents();
+        stu_contents.readdata();
         if(stu_contents.addlike(stu_content_id)){
             return new Responsecode("666");
         }else{
@@ -127,7 +124,9 @@ public class FunctionController {
     @GetMapping("api/addDislike")
     @ResponseBody
     public Responsecode addDislike(@RequestParam("stu_content_id") String stu_content_id){
+        System.out.println("hhh"+stu_content_id);
         Stu_contents stu_contents=new Stu_contents();
+        stu_contents.readdata();
         if(stu_contents.adddislike(stu_content_id)){
             return new Responsecode("666");
         }else{
@@ -153,6 +152,27 @@ public class FunctionController {
         Stu_contents stu_contents=new Stu_contents();
         List<Stu_contents> mycontents=stu_contents.showmycontents(stu_user_id);
         return mycontents;
+    }
+
+    //显示指定树洞的所有评论
+    @CrossOrigin
+    @GetMapping("api/showTreeHoleComment")
+    @ResponseBody
+    public List<Comments> showcomment(@RequestParam("stu_content)_id") String stu_content_id){
+        String contentid=stu_content_id;
+        Comments comments1=new Comments();
+        comments1.readdata();
+        return comments1.showthiscomments(contentid);
+    }
+
+    //查看此条树洞的详细内容
+    @CrossOrigin
+    @GetMapping("api/showTreeHoleDetails")
+    @ResponseBody
+    public Stu_contents showtreeholedetails(@RequestParam("stu_content_id") String stu_content_id){
+        Stu_contents stu_contents=new Stu_contents();
+        stu_contents.readdata();
+        return stu_contents.showdetails(stu_content_id);
     }
 
 }

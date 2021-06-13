@@ -19,7 +19,7 @@ public class Stu_contents {
     public String pub_time; //发表时间
     public String update_at;
     public String tag;
-    public int like;
+    public int good;
     public int dislike;
     public List<Stu_contents> stu_contentsList=new ArrayList<Stu_contents>();
 
@@ -79,12 +79,12 @@ public class Stu_contents {
         this.tag = tag;
     }
 
-    public int getLike() {
-        return like;
+    public int getGood() {
+        return good;
     }
 
-    public void setLike(int like) {
-        this.like = like;
+    public void setGood(int good) {
+        this.good = good;
     }
 
     public int getDislike() {
@@ -116,7 +116,7 @@ public class Stu_contents {
                 stu_contents.pub_time=rs.getString("pub_time");
                 stu_contents.update_at=rs.getString("update_at");
                 stu_contents.tag=rs.getString("tag");
-                stu_contents.like=rs.getInt("like");
+                stu_contents.good=rs.getInt("good");
                 stu_contents.dislike=rs.getInt("dislike");
                 System.out.println("111");
                 this.stu_contentsList.add(stu_contents);
@@ -126,6 +126,7 @@ public class Stu_contents {
         }
     }
 
+    //发表新评论
     public boolean addnewstu_contents(String stu_user_id,String title,String contents,String tag){
         Stu_contents newst_con=new Stu_contents();
         int conid;
@@ -182,14 +183,15 @@ public class Stu_contents {
         while(it.hasNext()){
             Stu_contents stu_contents=it.next();
             if(stu_contents.getStu_content_id().equals(stu_content_id)){
-                stu_contents.like++;
-                likenum=stu_contents.like;
+                stu_contents.good++;
+                likenum=stu_contents.good;
                 break;
             }
         }
-
-        String sql = "update stu_contents set like =? WHERE stu_content_id =?";
+        System.out.println("aaa"+likenum);
+        String sql = "update stu_contents set good =? where stu_content_id =?";
         try{
+
             PreparedStatement pr= Connectsql.getConnectsql().conn.prepareStatement(sql);
             pr.setInt(1,likenum);
             pr.setString(2,stu_content_id);
@@ -208,20 +210,21 @@ public class Stu_contents {
     //点踩
     public boolean adddislike(String stu_content_id){
         Iterator<Stu_contents> it=stu_contentsList.iterator();
-        int likenum=0;
+        int dislikenum=0;
         while(it.hasNext()){
             Stu_contents stu_contents=it.next();
             if(stu_contents.getStu_content_id().equals(stu_content_id)){
-                stu_contents.like--;
-                likenum=stu_contents.like;
+                System.out.println("ago:"+stu_contents.dislike);
+                stu_contents.dislike--;
+                dislikenum=stu_contents.dislike;
                 break;
             }
         }
-
-        String sql = "update stu_contents set like =? WHERE stu_content_id =?";
+        System.out.println(dislikenum+"now");
+        String sql = "update stu_contents set dislike =? where stu_content_id =?";
         try{
             PreparedStatement pr= Connectsql.getConnectsql().conn.prepareStatement(sql);
-            pr.setInt(1,likenum);
+            pr.setInt(1,dislikenum);
             pr.setString(2,stu_content_id);
             int row=pr.executeUpdate();
             if(row>0){
@@ -235,6 +238,7 @@ public class Stu_contents {
         return false;
     }
 
+    //展示我的所有评论
     public  List<Stu_contents> showmycontents(String stu_user_id){
         Iterator<Stu_contents> it=stu_contentsList.iterator();
         List<Stu_contents> mycontents=new ArrayList<Stu_contents>();
@@ -245,6 +249,18 @@ public class Stu_contents {
             }
         }
         return mycontents;
+    }
+
+    //展示指定树洞的所有信息
+    public Stu_contents showdetails(String stu_content_id){
+        Iterator<Stu_contents> it=stu_contentsList.iterator();
+        while(it.hasNext()){
+            Stu_contents stu_contents=it.next();
+            if(stu_contents.getStu_content_id().equals(stu_content_id)){
+                return stu_contents;
+            }
+        }
+        return null;
     }
 
 }

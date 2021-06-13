@@ -4,6 +4,7 @@ import com.example.demo.Tools.Connectsql;
 
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class Comments {
@@ -69,5 +70,18 @@ public class Comments {
             p.printStackTrace();
         }
     }
+
+    public List<Comments> showthiscomments(String stu_content_id){
+        Iterator<Comments> it=commentsList.iterator();
+        List<Comments> thiscommments=new ArrayList<Comments>();
+        while(it.hasNext()){
+            Comments c=it.next();
+            if(c.getStu_content_id().equals(stu_content_id)){
+                thiscommments.add(c);
+            }
+        }
+        return thiscommments;
+    }
+
 
 }
