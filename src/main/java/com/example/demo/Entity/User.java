@@ -3,17 +3,17 @@ package com.example.demo.Entity;
 public class User {
 
     public String type;
-    public String username;
+    public String userid;
     public String password;
-    public String nick_name;
+    public String nickname;
     public String ofc_name;
 
     public String getNick_name() {
-        return nick_name;
+        return nickname;
     }
 
     public void setNick_name(String nick_name) {
-        this.nick_name = nick_name;
+        this.nickname = nick_name;
     }
 
     public String getType() {
@@ -25,11 +25,11 @@ public class User {
     }
 
     public String getUsername() {
-        return username;
+        return userid;
     }
 
     public void setUsername(String username) {
-        this.username = username;
+        this.userid = username;
     }
 
     public String getPassword() {

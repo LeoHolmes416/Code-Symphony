@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class Chat_records {
@@ -82,12 +83,48 @@ public class Chat_records {
         chat_records.message=message;
 
         //获取系统当前时间
-        SimpleDateFormat tempDate = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat tempDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String datetime = tempDate.format(new java.util.Date());
 
         String sql="insert into official values(?,?,?,?)";
         try{
             PreparedStatement pr= Connectsql.getConnectsql().conn.prepareStatement(sql);
+            pr.setString(1,stu_user_id_send);
+            pr.setString(2,stu_user_id_receive);
+            pr.setString(3,message);
+            pr.setString(4,datetime);
+            int row=pr.executeUpdate();
+            if(row>0){
+                return true;
+            }
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    //获取和指定好友的全部聊天记录
+    public List<Chat_records> getchatrecords(String myid,String herid){
+        List<Chat_records> chatrecords=new ArrayList<Chat_records>();
+        Iterator<Chat_records> it=chat_recordsList.iterator();
+        while (it.hasNext()){
+            Chat_records chat_records=it.next();
+            if(chat_records.getStu_user_id_send().equals(myid)&&chat_records.getStu_user_id_receive().equals(herid)){
+                chatrecords.add(chat_records);
+            }
+        }
+        return chatrecords;
+    }
+
+    //和好友发消息
+    public boolean sendmessage(String stu_user_id_send,String stu_user_id_receive,String message){
+
+        String sql="insert into chat_records values(?,?,?,?)";
+        //获取系统当前时间
+        SimpleDateFormat tempDate = new SimpleDateFormat("yyyy-MM-dd");
+        String datetime = tempDate.format(new java.util.Date());
+        try{
+            PreparedStatement pr=Connectsql.getConnectsql().conn.prepareStatement(sql);
             pr.setString(1,stu_user_id_send);
             pr.setString(2,stu_user_id_receive);
             pr.setString(3,message);

@@ -13,7 +13,7 @@ import java.util.List;
 public class Stu_contents {
 
     public String stu_content_id;
-    public String stu_user_id;
+    public String nickname;
     public String title;
     public String contents;
     public String pub_time; //发表时间
@@ -31,12 +31,12 @@ public class Stu_contents {
         this.stu_content_id = stu_content_id;
     }
 
-    public String getStu_user_id() {
-        return stu_user_id;
+    public String getNickname() {
+        return nickname;
     }
 
-    public void setStu_user_id(String stu_user_id) {
-        this.stu_user_id = stu_user_id;
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
     }
 
     public String getTitle() {
@@ -110,7 +110,7 @@ public class Stu_contents {
             while(rs.next()){
                 Stu_contents stu_contents=new Stu_contents();
                 stu_contents.stu_content_id=rs.getString("stu_content_id");
-                stu_contents.stu_user_id=rs.getString("stu_user_id");
+                stu_contents.nickname=rs.getString("nickname");
                 stu_contents.title=rs.getString("title");
                 stu_contents.contents=rs.getString("contents");
                 stu_contents.pub_time=rs.getString("pub_time");
@@ -118,7 +118,6 @@ public class Stu_contents {
                 stu_contents.tag=rs.getString("tag");
                 stu_contents.good=rs.getInt("good");
                 stu_contents.dislike=rs.getInt("dislike");
-                System.out.println("111");
                 this.stu_contentsList.add(stu_contents);
             }
         }catch (Exception p){
@@ -126,39 +125,40 @@ public class Stu_contents {
         }
     }
 
-    //发表新评论
-    public boolean addnewstu_contents(String stu_user_id,String title,String contents,String tag){
+    //发表新树洞
+    public static Stu_contents addnewstu_contents(String nickname,String contents,String tag){
         Stu_contents newst_con=new Stu_contents();
         int conid;
-        for(conid=1;conid<1000;conid++){
-            Iterator<Stu_contents> it1= stu_contentsList.iterator();
+        newst_con.readdata();
+        here:for(conid=1;conid<1000;conid++){
+            Iterator<Stu_contents> it1= newst_con.stu_contentsList.iterator();
             while(it1.hasNext()){
                 Stu_contents stu_contents=it1.next();
                 if(stu_contents.getStu_content_id().equals(Integer.toString(conid))){
-                    continue;
+                    System.out.println("same");
+                    continue here;
                 }
             }
             break;
         }
+        System.out.println("aa"+conid);
 
         //获取系统当前时间
-        SimpleDateFormat tempDate = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat tempDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String datetime = tempDate.format(new java.util.Date());
 
         newst_con.setStu_content_id(Integer.toString(conid));
-        newst_con.setStu_user_id(stu_user_id);
-        newst_con.setTitle(title);
+        newst_con.setNickname(nickname);
         newst_con.setContents(contents);
         newst_con.setPub_time(datetime);
         newst_con.setTag(tag);
-        stu_contentsList.add(newst_con);
 
-        String sql="insert into official stu_contents(?,?,?,?,?,?,?,?,?)";
+        String sql="insert into  stu_contents values(?,?,?,?,?,?,?,?,?)";
         try{
             PreparedStatement pr= Connectsql.getConnectsql().conn.prepareStatement(sql);
             pr.setString(1,Integer.toString(conid));
-            pr.setString(2,stu_user_id);
-            pr.setString(3,title);
+            pr.setString(2,nickname);
+            pr.setString(3,null);
             pr.setString(4,contents);
             pr.setString(5,datetime);
             pr.setString(6,null);
@@ -167,28 +167,28 @@ public class Stu_contents {
             pr.setInt(9,0);
             int row=pr.executeUpdate();
             if(row>0){
-                return true;
+                return newst_con;
             }
         }catch(SQLException e){
             e.printStackTrace();
         }
-        return false;
+        return null;
 
     }
 
     //点赞
-    public boolean addlike(String stu_content_id){
+    public int addlike(String stu_content_id){
         Iterator<Stu_contents> it=stu_contentsList.iterator();
         int likenum=0;
         while(it.hasNext()){
             Stu_contents stu_contents=it.next();
             if(stu_contents.getStu_content_id().equals(stu_content_id)){
+                System.out.println("goodnum:"+stu_contents.good);
                 stu_contents.good++;
                 likenum=stu_contents.good;
                 break;
             }
         }
-        System.out.println("aaa"+likenum);
         String sql = "update stu_contents set good =? where stu_content_id =?";
         try{
 
@@ -197,30 +197,28 @@ public class Stu_contents {
             pr.setString(2,stu_content_id);
             int row=pr.executeUpdate();
             if(row>0){
-                return true;
+                return likenum;
             }else{
-                return false;
+                return -1;
             }
         }catch (SQLException e){
             e.printStackTrace();
         }
-        return false;
+        return -1;
     }
 
     //点踩
-    public boolean adddislike(String stu_content_id){
+    public int adddislike(String stu_content_id){
         Iterator<Stu_contents> it=stu_contentsList.iterator();
         int dislikenum=0;
         while(it.hasNext()){
             Stu_contents stu_contents=it.next();
             if(stu_contents.getStu_content_id().equals(stu_content_id)){
-                System.out.println("ago:"+stu_contents.dislike);
-                stu_contents.dislike--;
+                stu_contents.dislike++;
                 dislikenum=stu_contents.dislike;
                 break;
             }
         }
-        System.out.println(dislikenum+"now");
         String sql = "update stu_contents set dislike =? where stu_content_id =?";
         try{
             PreparedStatement pr= Connectsql.getConnectsql().conn.prepareStatement(sql);
@@ -228,23 +226,23 @@ public class Stu_contents {
             pr.setString(2,stu_content_id);
             int row=pr.executeUpdate();
             if(row>0){
-                return true;
+                return dislikenum;
             }else{
-                return false;
+                return -1;
             }
         }catch (SQLException e){
             e.printStackTrace();
         }
-        return false;
+        return -1;
     }
 
     //展示我的所有评论
-    public  List<Stu_contents> showmycontents(String stu_user_id){
+    public  List<Stu_contents> showmycontents(String nickname){
         Iterator<Stu_contents> it=stu_contentsList.iterator();
         List<Stu_contents> mycontents=new ArrayList<Stu_contents>();
         while(it.hasNext()){
             Stu_contents stu_contents=it.next();
-            if(stu_contents.getStu_user_id().equals(stu_user_id)){
+            if(stu_contents.getNickname().equals(nickname)){
                 mycontents.add(stu_contents);
             }
         }

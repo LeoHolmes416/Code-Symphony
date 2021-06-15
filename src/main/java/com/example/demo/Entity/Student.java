@@ -13,7 +13,6 @@ import java.util.List;
 public class Student extends User{
 
     public String stu_user_id;
-    public String user_nickname;
     public String password;
     public int user_state;   //0未认证1已认证
     public String register_date;
@@ -40,7 +39,7 @@ public class Student extends User{
             while(rs.next()){
                 Student student=new Student();
                 student.stu_user_id=rs.getString("stu_user_id");
-                student.user_nickname=rs.getString("user_nickname");
+                student.nickname=rs.getString("user_nickname");
                 student.password=rs.getString("user_password");
                 student.user_state=rs.getInt("user_state");
                 student.register_date=rs.getString("register_date");
@@ -66,11 +65,11 @@ public class Student extends User{
     }
 
     public String getUser_nickname() {
-        return user_nickname;
+        return nickname;
     }
 
     public void setUser_nickname(String user_nickname) {
-        this.user_nickname = user_nickname;
+        this.nickname = user_nickname;
     }
 
     public String getPassword() {
@@ -166,14 +165,22 @@ public class Student extends User{
         while(iterator.hasNext()){
             Student student= iterator.next();
             if(student.getStu_user_id().equals(userid)&&student.getPassword().equals(password)){
-                studentlogin=student;
+                Student.studentlogin=student;
                 return true;
             }
         }
         return false;
     }
 
-    public boolean addnewstudent(String username,String nickname,String password){
+    public static Student getStudentlogin() {
+        return studentlogin;
+    }
+
+    public static void setStudentlogin(Student studentlogin) {
+        Student.studentlogin = studentlogin;
+    }
+
+    public boolean addnewstudent(String username, String nickname, String password){
         Student student=new Student();
         student.setStu_user_id(username);
         student.setUser_nickname(nickname);
@@ -181,7 +188,7 @@ public class Student extends User{
         studentlist.add(student);
         String sql="insert into student values(?,?,?,?,?,?,?,?,?,?,?,?)";
         //获取系统当前时间
-        SimpleDateFormat tempDate = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat tempDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String datetime = tempDate.format(new java.util.Date());
 
         try{

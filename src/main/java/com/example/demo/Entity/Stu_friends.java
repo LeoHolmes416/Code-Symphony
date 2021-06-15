@@ -4,6 +4,7 @@ import com.example.demo.Tools.Connectsql;
 
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class Stu_friends {
@@ -80,4 +81,26 @@ public class Stu_friends {
             p.printStackTrace();
         }
     }
+
+    //获取全部的好友列表
+    public List<Student> getfriendlist(String mystuid){
+        List<Student> friends=new ArrayList<Student>();
+        Iterator<Stu_friends> it=stu_friendsList.iterator();
+        Student student=new Student();
+        student.readdata();
+        while(it.hasNext()){
+            Stu_friends stu_friends=it.next();
+            if(stu_friends.getStu_user_id_a().equals(mystuid)){
+                Iterator<Student> itstudent=student.getStudentlist().iterator();
+                while(itstudent.hasNext()){
+                    Student student1= itstudent.next();
+                    if(student1.getStu_user_id().equals(stu_friends.getStu_user_id_b())){
+                        friends.add(student1);
+                    }
+                }
+            }
+        }
+        return friends;
+    }
+
 }

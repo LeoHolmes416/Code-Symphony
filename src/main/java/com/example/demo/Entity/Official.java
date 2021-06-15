@@ -127,7 +127,7 @@ public class Official extends User{
         officialList.add(official);
 
         //获取系统当前时间
-        SimpleDateFormat tempDate = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat tempDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String datetime = tempDate.format(new java.util.Date());
 
         String sql="insert into official values(?,?,?,?,?,?,?,?)";
