@@ -13,7 +13,6 @@ import java.util.List;
 public class Official extends User{
 
     public String ofc_user_id;
-    public String user_nickname;
     public String user_password;
     public int user_state;
     public String register_date;
@@ -34,12 +33,6 @@ public class Official extends User{
     }
     public void setOfc_user_id(String ofc_user_id) {
         this.ofc_user_id = ofc_user_id;
-    }
-    public String getUser_nickname() {
-        return user_nickname;
-    }
-    public void setUser_nickname(String user_nickname) {
-        this.user_nickname = user_nickname;
     }
     public String getUser_password() {
         return user_password;
@@ -91,7 +84,7 @@ public class Official extends User{
             while(rs.next()){
                 Official official=new Official();
                 official.ofc_user_id=rs.getString("ofc_user_id");
-                official.user_nickname=rs.getString("user_nickname");
+                official.nickname=rs.getString("user_nickname");
                 official.user_password=rs.getString("user_password");
                 official.user_state=rs.getInt("user_state");
                 official.register_date=rs.getString("register_date");

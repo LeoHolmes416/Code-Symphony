@@ -128,8 +128,9 @@ public class Stu_contents {
     //发表新树洞
     public static Stu_contents addnewstu_contents(String nickname,String contents,String tag){
         Stu_contents newst_con=new Stu_contents();
-        int conid;
         newst_con.readdata();
+        //生成一个新的content_id
+        int conid;
         here:for(conid=1;conid<1000;conid++){
             Iterator<Stu_contents> it1= newst_con.stu_contentsList.iterator();
             while(it1.hasNext()){
@@ -141,7 +142,6 @@ public class Stu_contents {
             }
             break;
         }
-        System.out.println("aa"+conid);
 
         //获取系统当前时间
         SimpleDateFormat tempDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");

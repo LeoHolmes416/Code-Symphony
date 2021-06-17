@@ -2,14 +2,17 @@ package com.example.demo.Entity;
 
 import com.example.demo.Tools.Connectsql;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public class Ofc_contents {
     public String ofc_content_id;
-    public String group_id;
+    public String ofc_name;
     public String title;
     public String contents;
     public String pub_time;
@@ -26,13 +29,6 @@ public class Ofc_contents {
         this.ofc_content_id = ofc_content_id;
     }
 
-    public String getGroupid() {
-        return group_id;
-    }
-
-    public void setGroupid(String groupid) {
-        this.group_id = groupid;
-    }
 
     public String getTitle() {
         return title;
@@ -88,8 +84,8 @@ public class Ofc_contents {
             ResultSet rs= Connectsql.getConnectsql().conn.createStatement().executeQuery(sql);
             while(rs.next()){
                 Ofc_contents ofc_contents=new Ofc_contents();
-                ofc_contents.ofc_content_id=rs.getString("stu_content_id");
-                ofc_contents.group_id=rs.getString("group_id");
+                ofc_contents.ofc_content_id=rs.getString("ofc_content_id");
+                ofc_contents.ofc_name=rs.getString("ofc_name");
                 ofc_contents.title=rs.getString("title");
                 ofc_contents.contents=rs.getString("contents");
                 ofc_contents.pub_time=rs.getString("pub_time");
@@ -102,16 +98,60 @@ public class Ofc_contents {
         }
     }
 
-    public String viewgroupcontents(String groupid){
-        Iterator<Ofc_contents> it= ofc_contentsList.iterator();
-        String contents=null;
-        while(it.hasNext()){
-            Ofc_contents ofc=it.next();
-            if(ofc.getGroupid().equals(groupid)){
-                contents=ofc.getContents();
+    //根据指定nickname返回该用户下所有的contents
+    public List<Ofc_contents> getthiscontents(String ofc_name){
+        List<Ofc_contents> thiscontents=new ArrayList<Ofc_contents>();
+        Iterator<Ofc_contents> iterator= ofc_contentsList.iterator();
+        while(iterator.hasNext()){
+            Ofc_contents ofc_contents= iterator.next();
+            if(ofc_contents.ofc_name.equals(ofc_name)){
+                thiscontents.add(ofc_contents);
             }
         }
-        return contents;
+        return thiscontents;
+    }
+
+    public boolean addnewofc_contents(String ofc_name,String title,String contents){
+        Ofc_contents newofc_contents=new Ofc_contents();
+        newofc_contents.readdata();
+
+        //生成一个新的content_id
+        int conid;
+        here:for(conid=1;conid<1000;conid++){
+            Iterator<Ofc_contents> it1= newofc_contents.ofc_contentsList.iterator();
+            while(it1.hasNext()){
+                Ofc_contents ofc_contents=it1.next();
+                if(ofc_contents.getOfc_content_id().equals(Integer.toString(conid))){
+                    continue here;
+                }
+            }
+            break;
+        }
+
+        //获取系统当前时间
+        SimpleDateFormat tempDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String datetime = tempDate.format(new java.util.Date());
+
+        String sql="insert into  ofc_contents values(?,?,?,?,?,?,?)";
+        try{
+            PreparedStatement pr= Connectsql.getConnectsql().conn.prepareStatement(sql);
+            pr.setString(1,Integer.toString(conid));
+            pr.setString(2,ofc_name);
+            pr.setString(3,title);
+            pr.setString(4,contents);
+            pr.setString(5,datetime);
+            pr.setString(6,null);
+            pr.setInt(7,105);
+            int row=pr.executeUpdate();
+            if(row>0){
+                return true;
+            }
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        return false;
+
+
     }
 
 }

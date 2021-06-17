@@ -223,4 +223,73 @@ public class FunctionController {
         return newofccontents;
     }
 
+    //展示所有的官方用户
+    @CrossOrigin
+    @GetMapping("api/showAllOfcUsers")
+    @ResponseBody
+    public List<Official> getallofcuser(){
+        Official official=new Official();
+        official.readdata();
+        return official.officialList;
+    }
+
+    //展示指定官方号的所有官方内容
+    @CrossOrigin
+    @GetMapping("api/showOfcContents")
+    @ResponseBody
+    public List<Ofc_contents> showofccontents(@RequestParam("ofc_name") String ofc_name){
+        Ofc_contents ofc_contents=new Ofc_contents();
+        ofc_contents.readdata();
+        return ofc_contents.getthiscontents(ofc_name);
+    }
+
+    //学生关注官方
+    @CrossOrigin
+    @PostMapping("api/followOfc")
+    @ResponseBody
+    public Responsecode followofc(@RequestBody Student_group student_group){
+        String stu_user_id= student_group.stu_user_id;
+        String ofc_user_id=student_group.ofc_user_id;
+        Student_group student_group1=new Student_group();
+        if(student_group1.followofc(stu_user_id,ofc_user_id)){
+            return new Responsecode("666");
+        }else{
+            return new Responsecode("404");
+        }
+    }
+
+    //返回指定学生关注的所有官方
+    @CrossOrigin
+    @GetMapping("api/showMyFollowOfc")
+    @ResponseBody
+    public List<Official> showmyfollowofc(@RequestParam("stu_user_id") String stu_user_id){
+        Student_group student_group=new Student_group();
+        student_group.readdata();
+        List<Official> myofficial=student_group.getmyofficial(stu_user_id);
+        return myofficial;
+    }
+
+    //返回关注了指定官方的所有student
+    @CrossOrigin
+    @GetMapping("api/showAllFollows")
+    @ResponseBody
+    public List<Student> showallfollows(@RequestParam("ofc_user_id") String ofc_user_id){
+        Student_group student_group=new Student_group();
+        student_group.readdata();
+        return student_group.getmystudent(ofc_user_id);
+    }
+
+    //发表新的官方内容
+    @CrossOrigin
+    @PostMapping("api/postOfcContent")
+    @ResponseBody
+    public Responsecode addnewofccontents(@RequestBody Ofc_contents ofc_contents){
+        Ofc_contents ofc_contents1=new Ofc_contents();
+        if(ofc_contents1.addnewofc_contents(ofc_contents.ofc_name,ofc_contents.title,ofc_contents.contents)){
+            return new Responsecode("666");
+        }else{
+            return new Responsecode("404");
+        }
+    }
+
 }
